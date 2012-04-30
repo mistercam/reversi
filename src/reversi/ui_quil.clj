@@ -10,6 +10,7 @@
 (def padding 5) ; the spacing within a square that surrounds a piece
 (def message-width (- board-size 80)) ; the width of the message box
 (def message-height 80) ; the height of the message box
+(def message-time 3) ; amount of time in seconds to display a message
 (def fps 10) ; the number of times per second are sketch will be redrawn
 (def color-black [0 0 0])
 (def color-grey [200 200 200])
@@ -66,7 +67,7 @@
 ;; This function draws the square for every permutation of row and column. We also print
 ;; the active player in the footer.
 (defn draw-board [board piece msg]
-  "Draws the Reversi game board and pieces, or a warning message if one exists."
+  "Draws the Reversi game board."
   (apply background color-black)
   (doseq [r (range 8) c (range 8)]
     (draw-square @board r c))
@@ -79,7 +80,7 @@
 (defn set-message [m message]
   "Specifies a new message to be drawn to the screen, and the length of time it
   remain."
-  (let [seconds (* 3 fps)]
+  (let [seconds (* message-time fps)]
     (reset! m [seconds message])))
 
 ;; This method stores the winning-game text into 'msg' so draw-board can
