@@ -1,0 +1,32 @@
+# reversi
+
+An implementation of the strategic board game Reversi, written in Clojure, with
+three different user interfaces.
+
+(See: http://en.wikipedia.org/wiki/Reversi for details on rules, strategy, etc.)
+
+## Usage
+
+At the promp, create a standalone JAR using lein:
+
+$ lein uberjar
+
+This will generate a jar such as clojure-reversi-0.1.0-SNAPSHOT-standalone.jar
+
+To run the text version of the game:
+
+$ java -jar clojure-reversi-0.1.0-SNAPSHOT-standalone.jar text
+
+To run the Quil version of the game:
+
+$ java -jar clojure-reversi-0.1.0-SNAPSHOT-standalone.jar quil
+
+To run the Swing version of the game:
+
+$ java -jar clojure-reversi-0.1.0-SNAPSHOT-standalone.jar swing
+
+## License
+
+Copyright (C) 2012 Cameron Donaldson
+
+Distributed under the Eclipse Public License, the same as Clojure.
