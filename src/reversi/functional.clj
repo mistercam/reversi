@@ -99,7 +99,7 @@
 ;;
 ;; #(...) is a reader macro (i.e. short form) for the fn(...) function, and the % is a
 ;; place-holder for the first argument passed into the function.
-(defn place-piece-2 [board piece move]
+(defn place-piece [board piece move]
   "Returns a new board that results from playing the specified piece and move."
   (if (move-valid? board piece move)
     (let [r (move 0) c (move 1)]
@@ -114,21 +114,6 @@
          #(flip % piece move (directions :W ))
          #(flip % piece move (directions :NW )))
         board)))) ; the move and piece were not valid, so just return the board unchanged
-
-(defn place-piece [board piece move]
-  "Returns a new board that results from playing the specified piece and move."
-  (if (move-valid? board piece move)
-    (let [r (move 0) c (move 1) b (atom board)]
-      (swap! b #(assoc % r (assoc (% r) c piece)))
-      (swap! b #(flip % piece move (directions :N )))
-      (swap! b #(flip % piece move (directions :NE )))
-      (swap! b #(flip % piece move (directions :E )))
-      (swap! b #(flip % piece move (directions :SE )))
-      (swap! b #(flip % piece move (directions :S )))
-      (swap! b #(flip % piece move (directions :SW )))
-      (swap! b #(flip % piece move (directions :W )))
-      (swap! b #(flip % piece move (directions :NW ))))
-    board))
 
 ;; The game is over when neither player has any remaining moves to make
 (defn game-over? [board]
